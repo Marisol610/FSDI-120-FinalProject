@@ -1,0 +1,17 @@
+{% extends 'myswapapp/base.html'%}
+{% load static %}
+
+{% load crispy_forms_tags %}
+{% block title %}Delete Product Form{% endblock title%}
+
+{% block content %}
+
+<p>Are you sure you want to delete product "{{product}}"?</p>
+
+<form action="{% url 'myswapapp:delete_order' product.id %}" method='POST'>
+    {% csrf_token %}
+
+    <a href="{% url 'myswapapp:home' %}">Cancel</a>
+    <input type="submit" name="Confirm">
+</form>
+{% endblock content%}

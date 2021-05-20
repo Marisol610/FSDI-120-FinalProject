@@ -1,0 +1,73 @@
+{% extends 'myswapapp/base.html'%}
+{% load static %}
+
+
+{% block content %}
+
+
+<style>
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        width: 100%;
+        background-image: url(/static/images/static/images/pastelornbg.jpg);
+        background-position: center;
+
+        background-size: cover;
+        position: relative;
+    }
+
+    img {
+        padding-top: 25px;
+        padding-left: 15px;
+        border: solid 5px mistyrose
+    }
+
+
+
+    products-info {
+        padding-bottom: 20px;
+    }
+</style>
+
+
+
+
+<h2> Product Detail</h2>
+
+
+</style>
+<div class="card mb-3" style="max-width: 940px;">
+    <div class="row g-0">
+        <div class="col-md-5">
+            <img src="{{ product.image.url }}" style="height:50%">
+        </div>
+        <div class="col-md-7">
+            <div class="card-body">
+                <h5> <strong><a href="{{ product.get_absolute_url}}" class="card-title">{{ product.title }}</a></strong>
+                </h5>
+                <p class="card-text">{{ product.category}}</p>
+                <p class="card-text">{{ product.description}}.</p>
+                <div class="products-info">
+                    <ul class="info">
+                        <li><span class="text-uppercase">Price: ${{ product.price}}</span></li>
+                        <li><span class="text-uppercase">Shipping out of: {{ product.location}}</span></li>
+
+                    </ul>
+                    <form action="add_product_in_basket">
+                        <input type="" name="prod_id" value={{product.id}} id="prod_id">
+                        <button type="" class="btn btn-outline-warning  add-btn update-basket"><a
+                                href="{% url 'myswapapp:order_summary' %}">Proceed To
+                                Checkout</a>
+                        </button>
+                    </form>
+
+                    {% endblock content %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

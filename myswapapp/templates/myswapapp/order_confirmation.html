@@ -1,0 +1,89 @@
+{% extends 'myswapapp/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<style>
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-image: url(/static/images/static/images/pastelornbg.jpg);
+        background-position: center;
+        background-size: cover;
+        position: relative;
+
+
+    }
+
+    h2 {
+        color: blue;
+    }
+</style>
+
+
+<h2> Order Confirmation #542771</h2>
+<h2> Thank You for placing an order with MerrySwap. The swapper will contact you with shipping instruction. </h2>
+
+<div class="container my-5">
+    <div class="row">
+        <h1 class="text-center mb-5">Your payment processed Sucessfully!</h1>
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Your Receipt</h3>
+                    {% for basket in baskets %}
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3 text-center align-self-center">
+                            <img src="{{ basket.product.image.url }}" alt="" srcset=""
+                                class="img-fluid img-thumbnail shadow-sm" height="150" width="150">
+
+                        </div>
+                        <div class="col-sm-9">
+                            <div>
+                                <h5>{{basket.product.title}}</h5>
+                                <p class="mb-2 text-muted small">{{basket.product.description}}</p>
+                                <div class="my-3">
+                                    <label for="quantity">Quantity:</label>
+                                    <a class="minus-cart btn" pid="{{basket.product}}"></a><i
+                                        class="fas fa-minus-square fa-lg"></i></a>
+                                    <span id="quantity">{{basket.quantity}}</span>
+                                    <a class="plus-cart btn"><i class="fas fa-plus-square fa-lg"></i></a>
+                                </div>
+
+                                <p class="mb-0"><span><strong>${{basket.product.price}}</strong></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Total Dollar Amount charged tou your Paypal Account </h3>
+                        <ul class="list-group">
+                            <li
+                                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                Order Amount<span>$$${{basket.product.price}}</span></li><br>
+
+                            <a href="{% url 'myswapapp:home' %}" class="btn btn-outline-primary float-right">Continue
+                                Swapping</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    {% endblock content%}

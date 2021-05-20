@@ -1,0 +1,63 @@
+{% extends 'myswapapp/base.html'%}
+{% load static %}
+
+{% load crispy_forms_tags %}
+{% block title %}MerrySwap Payment Form{% endblock title%}
+
+{% block content %}
+
+
+<style>
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-image: url(/static/images/static/images/pastelornbg.jpg);
+        background-position: center;
+        background-size: cover;
+        position: relative;
+
+
+    }
+</style>
+
+
+
+
+
+<div class="payment-form">
+
+    <section id="custom-control custom-radio">
+        <div class="paypal">
+            <div class="container">
+                <h2>MerrySwap</h2>
+                <h2>PayPal Payment Form</h2>
+
+
+                <form method=" POST" class="card-body">
+                    <p>Enter Your Paypal Account Information</p>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+
+                    {% for value, name in form.fields.payment_option.choices %}
+                    <div class="custom-control custom-radio">
+                        <input id="{{ name }}" name="payment_option" value="{{ value }}" type="radio"
+                            class="custom-control-input" placeholder="Enter Pay Pal Account">
+                        {% endfor %}
+                        <label class="custom-control-label" for="{{ name }}">{{ name }}</label>
+                        <div class="paypal-payment">
+
+                            <!--<input type="submit" name="Make Payment">-->
+                            <button type="" class="btn btn-outline-warning  add-btn update-basket"><a
+                                    href="{% url 'myswapapp:order_confirmation' %}"></i>Submit Payment
+                                </a>
+                            </button>
+
+                        </div>
+
+
+                </form>
+            </div>
+
+            {% endblock content %}

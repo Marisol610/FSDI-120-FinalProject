@@ -1,0 +1,140 @@
+{% extends 'myswapapp/main.html'%}
+{% load static %}
+
+{% block title %}Welcome To MerrySwap App{% endblock title%}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Welcome Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+        integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-image: url(/static/images/static/images/pastelornbg.jpg);
+            background-position: center;
+            background-size: cover;
+            position: relative;
+
+
+        }
+
+        .showcase {
+            height: 300vh;
+            width: 100%;
+
+            position: absolute;
+            box-sizing: border-box;
+            position: relative;
+
+
+        }
+
+        .showcase header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px 100px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgb(24, 12, 196);
+
+        }
+
+        .app-logo1 {
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+
+
+
+        .welcome {
+
+            position: relative;
+            z-index: 10;
+        }
+
+        .welcome .invite h3 {
+            align-items: center;
+            padding-right: 11px;
+            padding-top: 85px;
+            font-size: 3em;
+            line-height: 1em;
+            color: rgb(24, 12, 196);
+        }
+
+        .welcome .invite p {
+            font-size: 1.5em;
+            line-height: 1em;
+            padding-top: 35px;
+            margin-right: 800px;
+            color: rgb(24, 12, 196);
+        }
+
+        .welcome .invite a {
+            padding-top: 65px;
+        }
+
+        .media {
+            padding-top: 75px;
+        }
+    </style>
+</head>
+
+<section class="showcase">
+    <header>
+
+
+    </header>
+    <div class="welcome">
+        <div class="invite">
+            <h3> Welcome to our community.</h3>
+            <p>Come swap your christmas ornaments, trees and other holiday items with our
+                amazing community.
+            </p>
+            <a href="{% url 'myswapapp:login' %}" class="btn" id="login-acc"> Get Started</a>
+
+            {% if messages %}
+            {% for messages in messages %}
+            <div class="alert alert-{{message.tags }}">"{{ message }}"</div>
+            {% endfor %}
+            {% endif %}
+
+        </div>
+
+        <div class="media">
+            <h4>Find Us In</h4>
+            <ul class="social">
+                <i class="fab fa-facebook-square"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-twitter"></i>
+            </ul>
+
+        </div>
+    </div>
+    </div>
+
+</section>
+
+{% endblock content %}
+</body>
+
+</html>
